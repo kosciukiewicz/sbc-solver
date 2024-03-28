@@ -1,0 +1,46 @@
+{
+  "id": 17,
+  "name": "Give Me Five",
+  "squad_slots": [],
+  "challenge_requirements": [
+    {
+      "slot": 4,
+      "scope": "MORE",
+      "challenge_type_name": "PlayerCountRequirement",
+      "predicate_values": [],
+      "predicate_type": "IS_RARE",
+      "count": 6
+    },
+    {
+      "slot": 6,
+      "scope": "MORE",
+      "challenge_type_name": "ChemistryRequirement",
+      "chemistry_value": 80
+    },
+    {
+      "slot": 5,
+      "scope": "MORE",
+      "challenge_type_name": "OverallRequirement",
+      "overall_value": 69
+    },
+    {
+      "slot": 1,
+      "scope": "SAME",
+      "challenge_type_name": "LeagueCountRequirement",
+      "count": 5
+    },
+    {
+      "slot": 3,
+      "scope": "LESS",
+      "challenge_type_name": "SameClubCountRequirement",
+      "count": 4
+    },
+    {
+      "slot": 2,
+      "scope": "LESS",
+      "challenge_type_name": "SameLeagueCountRequirement",
+      "count": 4
+    }
+  ],
+  "formation_name": "f451"
+}

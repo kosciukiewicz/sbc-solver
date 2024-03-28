@@ -1,0 +1,53 @@
+{
+   "manifest_version": 2,
+   "name": "FUT SBC Solver Extension",
+   "version": "0.1",
+   "icons": {
+      "48": "imgs/48.png"
+   },
+   "browser_action": {
+      "default_title": "Fut solver"
+   },
+   "permissions": [
+      "webRequest",
+      "webRequestBlocking",
+      "*://localhost/",
+      "*://*.ea.com/",
+      "tabs"
+   ],
+   "content_scripts": [
+      {
+         "all_frames": false,
+         "js": [
+            "react_app/static/js/main.4c3ac76e.js"
+         ],
+         "matches": [
+            "*://*.ea.com/*"
+         ],
+         "run_at": "document_start"
+      },
+      {
+         "all_frames": false,
+         "js": [
+            "loader_hook.js"
+         ],
+         "matches": [
+            "*://*.ea.com/*"
+         ],
+         "run_at": "document_start"
+      }
+   ],
+   "background": {
+      "scripts": [
+         "background.js"
+      ],
+      "persistent": true
+   },
+     "content_security_policy": "script-src 'self' 'wasm-unsafe-eval'; default-src 'self';",
+   "web_accessible_resources": [
+      "hook.js",
+      "react_app/static/media/*",
+      "react_app/static/js/*",
+      "*.wasm"
+   ]
+}

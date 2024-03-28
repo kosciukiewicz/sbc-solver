@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/static/js/main.4c3ac76e.js",
+    "static/media/sbc_optimization_engine_bg.wasm": "/static/media/sbc_optimization_engine_bg.5b35fbd9ead7097f7d54.wasm",
+    "static/js/solver_worker.a3546cf3.worker.js": "/static/js/solver_worker.a3546cf3.worker.js",
+    "index.html": "/index.html",
+    "main.4c3ac76e.js.map": "/static/js/main.4c3ac76e.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4c3ac76e.js"
+  ]
+}
