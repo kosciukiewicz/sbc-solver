@@ -96,3 +96,20 @@ export interface SolverConfig {
   maxSecondsPerSolution: number;
   numberOfSolutions: number;
 }
+
+export interface FormationPosition {
+  uniqueId: number;
+  typeId: number;
+  uniqueName: string;
+  typeName: string;
+}
+
+export interface Formation {
+  name: string;
+  uniquePositionSlots: number[];
+}
+
+export interface FormationsConfig {
+  positionData: FormationPosition[];
+  formationData: Formation[];
+}

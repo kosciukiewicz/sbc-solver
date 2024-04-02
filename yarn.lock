@@ -10431,7 +10431,7 @@ saxes@^5.0.1:
   dependencies:
     xmlchars "^2.2.0"
 
-"sbc_solver_engine@file:../../../../Witold/projects/personal/sbc-solver/sbc-solver-engine-pkg":
+"sbc_solver_engine@file:../sbc-solver-engine/pkg":
   version "0.0.1"
 
 scheduler@^0.23.0:

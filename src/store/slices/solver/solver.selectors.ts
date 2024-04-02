@@ -8,6 +8,9 @@ import { RootState } from "../../store";
 export const selectChallangeName = (state: RootState) =>
   state.solver.challenge?.name;
 
+export const selectChallengeFormationName = (state: RootState) =>
+  state.solver.challenge?.formation_name;
+
 export const selectChallangeRequirements = (state: RootState) =>
   state.solver.challenge ? state.solver.challenge!.challenge_requirements : [];
 

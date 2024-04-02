@@ -19,7 +19,7 @@ const SBCHeaderView: React.FC = () => {
 
   return (
     <div className="inline items-center gap-4">
-      SBC
+      <span className="text-xl font-semibold">SBC</span>{" "}
       <Chip variant="solid" color="primary" size="sm" className="ml-2">
         {challangeName}
       </Chip>

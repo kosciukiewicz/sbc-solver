@@ -1,53 +1,62 @@
 import * as tanslation_data from "../assets/en-US.json";
-import { CardQuality, ClubPlayerCard } from "./interfaces";
+import * as formations_config from "../assets/formations.json";
+import { CardQuality, Formation, FormationsConfig } from "./interfaces";
 
 const translations: { [key: string]: string } = tanslation_data;
+const formationsConfig: FormationsConfig = formations_config;
+const formationNameToFormationMapping: { [key: string]: Formation } =
+  Object.fromEntries(
+    formationsConfig.formationData.map((formation) => [
+      formation.name,
+      formation,
+    ]),
+  );
 
-export function getNationalityFullName(playerCard: ClubPlayerCard): string {
-  const key = `search.nationName.nation` + playerCard.nationality;
+export function getNationalityFullName(nationality: number): string {
+  const key = `search.nationName.nation` + nationality;
   const value = translations[key];
-  return (value ? value : playerCard.nationality) as string;
+  return (value ? value : nationality) as string;
 }
 
-export function getNationalityAbbreviation(playerCard: ClubPlayerCard): string {
-  const key = `nationAbbrvByID_` + playerCard.nationality;
+export function getNationalityAbbreviation(nationality: number): string {
+  const key = `nationAbbrvByID_` + nationality;
   const value = translations[key];
-  return (value ? value : playerCard.nationality) as string;
+  return (value ? value : nationality) as string;
 }
 
-export function getTeamFullName(playerCard: ClubPlayerCard): string {
-  const key = `global.teamabbr10.2024.team` + playerCard.team;
+export function getTeamFullName(team: number): string {
+  const key = `global.teamabbr10.2024.team` + team;
   const value = translations[key];
-  return (value ? value : playerCard.team) as string;
+  return (value ? value : team) as string;
 }
 
-export function getTeamAbbreviation(playerCard: ClubPlayerCard): string {
-  const key = `global.teamabbr3.2024.team` + playerCard.team;
+export function getTeamAbbreviation(team: number): string {
+  const key = `global.teamabbr3.2024.team` + team;
   const value = translations[key];
-  return (value ? value : playerCard.team) as string;
+  return (value ? value : team) as string;
 }
 
-export function getLeagueFullName(playerCard: ClubPlayerCard): string {
-  const key = `global.leagueFull.2024.league` + playerCard.league;
+export function getLeagueFullName(league: number): string {
+  const key = `global.leagueFull.2024.league` + league;
   const value = translations[key];
-  return (value ? value : playerCard.league) as string;
+  return (value ? value : league) as string;
 }
 
-export function getLeagueAbbreviation(playerCard: ClubPlayerCard): string {
-  const key = `global.leagueabbr5.2024.league` + playerCard.league;
+export function getLeagueAbbreviation(league: number): string {
+  const key = `global.leagueabbr5.2024.league` + league;
   const value = translations[key];
-  return (value ? value : playerCard.league) as string;
+  return (value ? value : league) as string;
 }
 
-export function getCardRarityTypeFullName(playerCard: ClubPlayerCard): string {
-  const key = `item.raretype` + playerCard.card_subtype_id;
+export function getCardRarityTypeFullName(cardSubtypeId: number): string {
+  const key = `item.raretype` + cardSubtypeId;
   const value = translations[key];
-  return (value ? value : playerCard.card_subtype_id) as string;
+  return (value ? value : cardSubtypeId) as string;
 }
 
-export function getCardLevelFullName(playerCard: ClubPlayerCard): string {
+export function getCardLevelFullName(card_quality: CardQuality): string {
   let key;
-  switch (playerCard.card_quality) {
+  switch (card_quality) {
     case CardQuality.Bronze:
       key = `search.cardLevels.cardLevel1`;
       break;
@@ -61,4 +70,13 @@ export function getCardLevelFullName(playerCard: ClubPlayerCard): string {
       key = `search.cardLevels.cardLevel4`;
   }
   return translations[key] as string;
+}
+
+export function getPositionName(
+  formationName: string,
+  position: number,
+): string {
+  const formation = formationNameToFormationMapping[formationName];
+  return formationsConfig.positionData[formation.uniquePositionSlots[position]]
+    .uniqueName;
 }

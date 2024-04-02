@@ -11,6 +11,7 @@ import SBCView from "./SBCView/SBCView";
 import SolverConfigView from "./SolverConfigView/SolverConfigView";
 import SolverBottonView from "./SolveButtonView/SolveButtonView";
 import ResultsView from "./ResultsView/ResultsView";
+import ResultsHeaderView from "./ResultsView/ResultsHeaderView";
 
 export const SolverView: React.FC = () => {
   const { disabledKeys } = useSolverView();
@@ -43,7 +44,7 @@ export const SolverView: React.FC = () => {
           <AccordionItem
             key="solver-config"
             aria-label="Solver config"
-            title="Solver config"
+            title={<span className="text-xl font-semibold">Solver config</span>}
             indicator={
               <IoIosArrowDropleft className="text-2xl text-secondary" />
             }
@@ -52,11 +53,11 @@ export const SolverView: React.FC = () => {
           </AccordionItem>
         </Accordion>
         <SolverBottonView />
-        <Accordion variant="light" selectionMode="multiple">
+        <Accordion variant="light" disabledKeys={disabledKeys}>
           <AccordionItem
             key="solver-results"
             aria-label="Results"
-            title="Results"
+            title={<ResultsHeaderView />}
             indicator={
               <IoIosArrowDropleft className="text-2xl text-secondary" />
             }

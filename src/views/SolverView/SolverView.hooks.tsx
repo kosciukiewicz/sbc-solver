@@ -20,6 +20,9 @@ export const useSolverView = () => {
   const challange = useAppSelector(
     (rootState: RootState) => rootState.solver.challenge,
   );
+  const solverResult = useAppSelector(
+    (rootState: RootState) => rootState.solver.solverResult,
+  );
 
   const disabledKeys = [];
 
@@ -29,6 +32,10 @@ export const useSolverView = () => {
 
   if (challange == null) {
     disabledKeys.push("sbc");
+  }
+
+  if (!solverResult) {
+    disabledKeys.push("solver-results");
   }
 
   return {

@@ -16,7 +16,6 @@ const SolverBottonView: React.FC = () => {
       {isSolverRunning ? (
         <Button
           color="danger"
-          variant="shadow"
           className="my-2 w-full"
           onClick={() => cancelSolver()}
         >
@@ -25,7 +24,6 @@ const SolverBottonView: React.FC = () => {
       ) : (
         <Button
           color="primary"
-          variant="shadow"
           className="my-2 w-full"
           onClick={() => runSolver()}
         >

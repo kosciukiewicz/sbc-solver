@@ -20,7 +20,7 @@ const PlayersHeaderView: React.FC<PlayersProps> = (props) => {
   const date = new Date(props.clubPlayers!.timestamp);
   return (
     <div className="inline items-center gap-4">
-      Players
+      <span className="text-xl font-semibold">Players</span>
       <Chip variant="solid" color="primary" size="sm" className="ml-2">
         Last import: {date.toLocaleString()}
       </Chip>

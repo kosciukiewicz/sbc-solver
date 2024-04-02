@@ -18,19 +18,19 @@ export const PlayerInfoTableRow: React.FC<PlayerInfoTableRowProps> = (
 ) => {
   const { playerCard } = props;
   return (
-    <div className="grid gap-0 text-start text-small">
-      <span className="text-base">{playerCard.name}</span>
-      <div className="flex gap-2 text-tiny">
-        <Tooltip content={getNationalityFullName(playerCard)}>
-          <span>{getNationalityAbbreviation(playerCard)}</span>
+    <div className="grid min-w-64 gap-0 text-start text-tiny">
+      <span className="font-bold">{playerCard.name}</span>
+      <div className="flex gap-2">
+        <Tooltip content={getNationalityFullName(playerCard.nationality)}>
+          <span>{getNationalityAbbreviation(playerCard.nationality)}</span>
         </Tooltip>
         <Divider orientation="vertical" />
-        <Tooltip content={getLeagueFullName(playerCard)}>
-          <span>{getLeagueAbbreviation(playerCard)}</span>
+        <Tooltip content={getLeagueFullName(playerCard.league)}>
+          <span>{getLeagueAbbreviation(playerCard.league)}</span>
         </Tooltip>
         <Divider orientation="vertical" />
-        <Tooltip content={getTeamFullName(playerCard)}>
-          <span>{getTeamAbbreviation(playerCard)}</span>
+        <Tooltip content={getTeamFullName(playerCard.team)}>
+          <span>{getTeamAbbreviation(playerCard.team)}</span>
         </Tooltip>
       </div>
     </div>

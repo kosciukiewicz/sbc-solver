@@ -86,17 +86,17 @@ const PlayersView: React.FC<PlayersProps> = (props) => {
             playerCard.card_quality == CardQuality.Gold &&
             playerCard.card_subtype_id > 2
           ) {
-            quality = getCardRarityTypeFullName(playerCard);
+            quality = getCardRarityTypeFullName(playerCard.card_subtype_id);
           } else {
-            quality = getCardLevelFullName(playerCard);
+            quality = getCardLevelFullName(playerCard.card_quality);
           }
           return (
             <Tooltip content={quality}>
-              <span className="... truncate text-base">{quality}</span>
+              <span className="... truncate">{quality}</span>
             </Tooltip>
           );
         default:
-          return <span className="text-base">{cellValue}</span>;
+          return <span>{cellValue}</span>;
       }
     },
     [],
