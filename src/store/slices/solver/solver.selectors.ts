@@ -51,4 +51,4 @@ export const selectSortedChallangeRequirements = createSelector(
 );
 
 export const selectIsChallangeImported = (state: RootState) =>
-  state.solver.challenge !== undefined;
+  state.solver.challenge != null;

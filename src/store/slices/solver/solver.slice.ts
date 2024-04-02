@@ -88,6 +88,12 @@ export const solverSlice = createSlice({
         solverProgress: action.payload,
       };
     },
+    resetState: (state) => {
+      return {
+        ...state,
+        ...initialState,
+      };
+    },
     handleIgnoreClubPlayerCard: (
       state,
       action: PayloadAction<ClubPlayerCard>,

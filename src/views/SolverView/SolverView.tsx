@@ -24,7 +24,7 @@ export const SolverView: React.FC = () => {
           <AccordionItem
             key="club-players"
             aria-label="Club players"
-            title={<PlayersHeaderView />}
+            startContent={<PlayersHeaderView />}
             indicator={
               <IoIosArrowDropleft className="text-2xl text-secondary" />
             }
@@ -34,7 +34,7 @@ export const SolverView: React.FC = () => {
           <AccordionItem
             key="sbc"
             aria-label="SBC"
-            title={<SBCHeaderView />}
+            startContent={<SBCHeaderView />}
             indicator={
               <IoIosArrowDropleft className="text-2xl text-secondary" />
             }

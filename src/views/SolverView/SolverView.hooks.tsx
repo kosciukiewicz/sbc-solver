@@ -38,8 +38,13 @@ export const useSolverView = () => {
     disabledKeys.push("solver-results");
   }
 
+  const clearState = useCallback(() => {
+    dispatch(solverSlice.actions.resetState());
+  }, [dispatch]);
+
   return {
     disabledKeys,
+    clearState,
   };
 };
 

@@ -5,13 +5,13 @@ const ResultsHeaderView: React.FC = () => {
   const { solverResult } = useResultsView();
 
   if (!solverResult || solverResult?.solutions.length == 0) {
-    return <div className="inline items-center gap-4">Results</div>;
+    return <span className="text-xl font-semibold">Results</span>;
   }
 
   return (
-    <div className="inline items-center gap-4">
+    <div className="flex items-center gap-2">
       <span className="text-xl font-semibold">Results</span>
-      <Chip variant="solid" color="primary" size="sm" className="ml-2">
+      <Chip variant="solid" color="primary" size="sm">
         {solverResult.solutions.length}
       </Chip>
     </div>
