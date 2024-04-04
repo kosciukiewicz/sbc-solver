@@ -14,3 +14,9 @@ export function mode(arr: number[]): number | undefined {
 
   return maxKey;
 }
+
+export function hashCode(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; h &= h) h = 31 * h + s.charCodeAt(i++);
+  return h;
+}

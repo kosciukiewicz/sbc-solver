@@ -8,7 +8,7 @@ export default function App() {
   return (
     <NextUIProvider>
       <Provider store={store}>
-        <div className="z-100 container absolute left-[55%] mx-auto w-[45%] bg-panelBackground text-foreground dark">
+        <div className="container absolute left-[55%] z-50 mx-auto w-[45%] bg-panelBackground text-foreground dark">
           <SolverView />
         </div>
       </Provider>

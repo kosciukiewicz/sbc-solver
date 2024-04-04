@@ -3,13 +3,22 @@ import { IoFootball } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
 import { useSolverView } from "./SolverView.hooks";
 
-export const SolverHeader: React.FC = () => {
+interface SolverHeaderProps {
+  onCollapseClick: () => void;
+}
+
+export const SolverHeader: React.FC<SolverHeaderProps> = (
+  props: SolverHeaderProps,
+) => {
   const { clearState } = useSolverView();
 
   return (
     <div className="m-4 inline-block flex items-center justify-between">
       <div className="flex items-center space-x-2">
-        <IoFootball className="text-2xl" />{" "}
+        <IoFootball
+          className="text-2xl"
+          onClick={() => props.onCollapseClick()}
+        />{" "}
         <a className="text-2xl font-medium">SBC Solver</a>
       </div>
       <div className="flex space-x-2">

@@ -31,28 +31,12 @@ import {
 } from "../../data/translations";
 import { PlayerInfoTableRow } from "../PlayerTableRow/PlayerInfoTableRow";
 import SBCRequirementDescription from "../SBCRequirementDescription";
+import { mode } from "../../utils";
 
 interface SolutionViewProps {
   challengeFormationName: string;
   challangeRequirements: { [name: number]: ChallengeRequirement };
   solution: SolverSolution;
-}
-
-function mode(arr: number[]): number | undefined {
-  const counts: { [name: number]: number } = {};
-  let maxCount = 0;
-  let maxKey;
-
-  for (let i = 0; i < arr.length; i++) {
-    const key = arr[i];
-    const count = (counts[key] = (counts[key] || 0) + 1);
-    if (count > maxCount) {
-      maxCount = count;
-      maxKey = key;
-    }
-  }
-
-  return maxKey;
 }
 
 const columns = [

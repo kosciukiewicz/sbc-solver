@@ -1,11 +1,9 @@
 import { useCallback, useEffect } from "react";
 import { RootState, useAppDispatch, useAppSelector } from "../../store/store";
-import {
-  getChallenge,
-  getClubPlayers,
-  getIgnoredClubPlayerCardsIds,
-} from "../../data/dataProvider";
+import { getIgnoredClubPlayerCardsIds } from "../../data/dataProvider";
 import { solverSlice } from "../../store/slices/solver/solver.slice";
+import { initializeWebAppGateway } from "../../web_app_gateway/club_players";
+import { ClubPlayers, SquadBuildingChallenge } from "../../data/interfaces";
 
 export const useSolverView = () => {
   const dispatch = useAppDispatch();
@@ -50,37 +48,27 @@ export const useSolverView = () => {
 
 export const useInitializeSolver = () => {
   const dispatch = useAppDispatch();
-  const initializePlayers = useInitializeClubPlayers();
-  const initializeSBC = useInitializeSBC();
   const initializeIgnoredPlayerCards = useInitializeIgnoredPlayerCards();
 
+  const setClubPlayers = useCallback(
+    async (clubPlayers: ClubPlayers) => {
+      dispatch(solverSlice.actions.setClubPlayers(clubPlayers));
+    },
+    [dispatch],
+  );
+  const setChallange = useCallback(
+    async (challange: SquadBuildingChallenge) => {
+      dispatch(solverSlice.actions.setChallenge(challange));
+    },
+    [dispatch],
+  );
+
   const initializeSolver = useCallback(async () => {
-    initializePlayers();
-    initializeSBC();
+    initializeWebAppGateway(setClubPlayers, setChallange);
     initializeIgnoredPlayerCards();
   }, [dispatch]);
 
   return initializeSolver;
-};
-
-const useInitializeClubPlayers = () => {
-  const dispatch = useAppDispatch();
-  const initializePlayers = useCallback(async () => {
-    const clubPlayers = await getClubPlayers();
-    dispatch(solverSlice.actions.setClubPlayers(clubPlayers));
-  }, [dispatch]);
-
-  return initializePlayers;
-};
-
-const useInitializeSBC = () => {
-  const dispatch = useAppDispatch();
-  const initializeSBC = useCallback(async () => {
-    const squadBuildingChallange = await getChallenge();
-    dispatch(solverSlice.actions.setChallenge(squadBuildingChallange));
-  }, [dispatch]);
-
-  return initializeSBC;
 };
 
 const useInitializeIgnoredPlayerCards = () => {

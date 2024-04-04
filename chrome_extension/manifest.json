@@ -13,23 +13,17 @@
       "webRequestBlocking",
       "*://localhost/",
       "*://*.ea.com/",
-      "tabs"
+      "tabs",
+      "debugger"
    ],
    "content_scripts": [
       {
          "all_frames": false,
          "js": [
-            "react_app/static/js/main.4c3ac76e.js"
+            "react_app/static/js/main.c010b76a.js"
          ],
-         "matches": [
-            "*://*.ea.com/*"
-         ],
-         "run_at": "document_start"
-      },
-      {
-         "all_frames": false,
-         "js": [
-            "loader_hook.js"
+         "css": [
+            "react_app/static/css/main.08cdf3a4.css"
          ],
          "matches": [
             "*://*.ea.com/*"
@@ -43,7 +37,7 @@
       ],
       "persistent": true
    },
-     "content_security_policy": "script-src 'self' 'wasm-unsafe-eval'; default-src 'self';",
+   "content_security_policy": "script-src 'self' 'wasm-unsafe-eval'; default-src 'self';",
    "web_accessible_resources": [
       "hook.js",
       "react_app/static/media/*",
