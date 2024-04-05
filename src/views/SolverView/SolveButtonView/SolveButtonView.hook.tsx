@@ -64,6 +64,10 @@ export const useSolverBottonView = () => {
       n_runs: solverConfig.numberOfSolutions,
       method_params: {
         ...default_solver_config.method_params,
+        population_size: solverConfig.populationSize,
+        tournament_size: solverConfig.tournamentSize,
+        crossover_prob: solverConfig.crossoverProbability,
+        mutation_prob: solverConfig.mutationProbability,
         stop_criterion: {
           max_time_in_seconds: solverConfig.maxSecondsPerSolution,
         },

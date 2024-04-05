@@ -95,6 +95,10 @@ export interface SolverSolutionRequirement {
 export interface SolverConfig {
   maxSecondsPerSolution: number;
   numberOfSolutions: number;
+  populationSize: number;
+  tournamentSize: number;
+  crossoverProbability: number;
+  mutationProbability: number;
 }
 
 export interface FormationPosition {

@@ -10,16 +10,20 @@ import {
 } from "../../../data/interfaces";
 import { SolverSliceState, SolverState } from "./solver.types";
 
-const default_solver_config: SolverConfig = {
+const defaultSolverConfig: SolverConfig = {
   maxSecondsPerSolution: 4,
   numberOfSolutions: 2,
+  populationSize: 100,
+  tournamentSize: 3,
+  crossoverProbability: 0.6,
+  mutationProbability: 0.02,
 };
 
 const initialState: SolverSliceState = {
   clubPlayers: null,
   ignoredClubPlayerCardsIds: [],
   challenge: null,
-  solverConfig: default_solver_config,
+  solverConfig: defaultSolverConfig,
   solverState: SolverState.NOT_STARTED,
   solverResult: null,
   solverProgress: 0,

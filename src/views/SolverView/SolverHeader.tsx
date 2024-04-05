@@ -13,12 +13,12 @@ export const SolverHeader: React.FC<SolverHeaderProps> = (
   const { clearState } = useSolverView();
 
   return (
-    <div className="m-4 inline-block flex items-center justify-between">
+    <div
+      className="m-4 inline-block flex cursor-pointer items-center justify-between"
+      onClick={() => props.onCollapseClick()}
+    >
       <div className="flex items-center space-x-2">
-        <IoFootball
-          className="text-2xl"
-          onClick={() => props.onCollapseClick()}
-        />{" "}
+        <IoFootball className="text-2xl" />{" "}
         <a className="text-2xl font-medium">SBC Solver</a>
       </div>
       <div className="flex space-x-2">

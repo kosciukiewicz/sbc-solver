@@ -1,12 +1,14 @@
 import {
-  selectChallangeName,
   selectSortedChallangeRequirements,
   selectIsChallangeImported,
   selectNotImplementedRequirementsCount,
 } from "../../../store/slices/solver/solver.selectors";
-import { useAppSelector } from "../../../store/store";
+import { RootState, useAppSelector } from "../../../store/store";
 
 export const useSBCView = () => {
+  const challenge = useAppSelector(
+    (state: RootState) => state.solver.challenge,
+  );
   const isChallangeImported = useAppSelector(selectIsChallangeImported);
   const notImplementedRequirementsCount = useAppSelector(
     selectNotImplementedRequirementsCount,
@@ -14,12 +16,11 @@ export const useSBCView = () => {
   const challangeRequirements = useAppSelector(
     selectSortedChallangeRequirements,
   );
-  const challangeName = useAppSelector(selectChallangeName);
 
   return {
+    challenge,
     isChallangeImported,
     notImplementedRequirementsCount,
     challangeRequirements,
-    challangeName,
   };
 };

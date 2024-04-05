@@ -2,7 +2,7 @@ import SBCRequirementListItem from "../../../components/SBCRequirementListItem";
 import { useSBCView } from "./SBCView.hooks";
 
 const SBCView: React.FC = () => {
-  const { challangeName, challangeRequirements, isChallangeImported } =
+  const { challenge, challangeRequirements, isChallangeImported } =
     useSBCView();
 
   if (!isChallangeImported) {
@@ -17,7 +17,7 @@ const SBCView: React.FC = () => {
     <div className="rounded-large	bg-zinc-900 p-4">
       <div className="rounded-small bg-zinc-800 p-2">
         <a className="ml-6 text-small font-semibold text-foreground-500">
-          {challangeName}
+          {challenge!.name}
         </a>
       </div>
       {challangeRequirements.map((requirement) => (

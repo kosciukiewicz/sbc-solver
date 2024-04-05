@@ -16,7 +16,7 @@ import { useState } from "react";
 
 export const SolverView: React.FC = () => {
   const { disabledKeys } = useSolverView();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   let className;
 
   if (isOpen) {

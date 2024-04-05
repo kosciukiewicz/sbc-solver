@@ -13,27 +13,17 @@ export const useSolverConfigView = () => {
     (rootState: RootState) => rootState.solver.solverConfig,
   );
 
-  const setNumberOfSolutions = useCallback(
-    (numberOfSolutions: number | number[]) => {
-      if (Number(numberOfSolutions)) {
+  const setConfigValue = useCallback(
+    (paramName: string, value: number | number[]) => {
+      if (Number(value)) {
+        const newSolverConfig: {
+          [k: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+        } = Object.assign([], solverConfig);
+        newSolverConfig[paramName] = value;
         dispatch(
           solverSlice.actions.setSolverConfig({
             ...solverConfig,
-            numberOfSolutions: Number(numberOfSolutions),
-          }),
-        );
-      }
-    },
-    [dispatch, solverConfig],
-  );
-
-  const setMaxSecondsPerSolution = useCallback(
-    (maxSecondsPerSolution: number | number[]) => {
-      if (Number(maxSecondsPerSolution)) {
-        dispatch(
-          solverSlice.actions.setSolverConfig({
-            ...solverConfig,
-            maxSecondsPerSolution: Number(maxSecondsPerSolution),
+            ...newSolverConfig,
           }),
         );
       }
@@ -43,7 +33,6 @@ export const useSolverConfigView = () => {
 
   return {
     solverConfig,
-    setNumberOfSolutions,
-    setMaxSecondsPerSolution,
+    setConfigValue,
   };
 };

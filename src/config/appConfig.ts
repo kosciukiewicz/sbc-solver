@@ -5,6 +5,7 @@ export enum DataProvider {
 
 export interface AppSettings {
   dataProvider: DataProvider;
+  advancedMode: boolean | undefined;
 }
 
 if (process.env.REACT_APP_DATA_PROVIDER == undefined) {
@@ -13,4 +14,5 @@ if (process.env.REACT_APP_DATA_PROVIDER == undefined) {
 
 export const appSettings: AppSettings = {
   dataProvider: <DataProvider>process.env.REACT_APP_DATA_PROVIDER,
+  advancedMode: process.env.REACT_APP_ADVANCED_MODE == "true",
 };
