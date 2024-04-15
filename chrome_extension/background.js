@@ -18,14 +18,13 @@ chrome.webRequest.onBeforeRequest.addListener(
     }
 
     if (
-      details.url ==
-      chrome.runtime.getURL(
-        "static/media/sbc_optimization_engine_bg.e79f51afea49d8b6a363.wasm",
+      details.url.includes(
+        "https://www.ea.com/static/js/solverWorker.49ca1ec1.worker.js",
       )
     ) {
       return {
         redirectUrl: chrome.runtime.getURL(
-          "react_app/static/media/sbc_optimization_engine_bg.e79f51afea49d8b6a363.wasm",
+          "react_app/static/js/solverWorker.49ca1ec1.worker.js",
         ),
       };
     }
@@ -37,10 +36,46 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message_type != "START_DEBUGING") {
+  if (!request.message_type || !request.data) {
     return;
   }
 
+  console.log(request);
+  const { message_type, data } = request;
+
+  switch (message_type) {
+    case "START_DEBUGING":
+      attachDebugger();
+      sendResponse({ status: 0 });
+      break;
+    case "FUT_WEB_APP_SOLVE":
+      solve(data);
+      break;
+    default:
+  }
+
+  return true;
+});
+
+const solve = (request) => {
+  const worker = new Worker(
+    chrome.runtime.getURL(
+      "react_app/static/js/solverWorker.49ca1ec1.worker.js",
+    ),
+  );
+  worker.addEventListener("message", (e) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        message_type: "FUT_WEB_APP_SOLVER_RESULT",
+        data: e.data,
+      });
+    });
+  });
+  console.log(request);
+  worker.postMessage(request);
+};
+
+const attachDebugger = () => {
   if (currentTabId) {
     chrome.debugger.detach({ tabId: currentTabId });
   }
@@ -58,14 +93,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     );
     chrome.debugger.onDetach.addListener(debuggerDetachHandler);
     console.log("attach " + currentTabId);
-    sendResponse({ status: 0 });
   });
-});
+};
 
 function debuggerDetachHandler() {
   console.log("detach");
   requests.clear();
 }
+
 function onAttach(tabId) {
   chrome.debugger.sendCommand(
     {

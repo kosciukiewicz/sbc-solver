@@ -12,6 +12,7 @@ export enum SolverState {
 }
 
 export type SolverSliceState = {
+  isOpen: boolean;
   clubPlayers: ClubPlayers | null;
   ignoredClubPlayerCardsIds: number[];
   challenge: SquadBuildingChallenge | null;

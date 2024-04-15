@@ -20,6 +20,7 @@ const defaultSolverConfig: SolverConfig = {
 };
 
 const initialState: SolverSliceState = {
+  isOpen: true,
   clubPlayers: null,
   ignoredClubPlayerCardsIds: [],
   challenge: null,
@@ -33,6 +34,12 @@ export const solverSlice = createSlice({
   name: "SolverSlice",
   initialState,
   reducers: {
+    setIsOpen: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        isOpen: action.payload,
+      };
+    },
     setClubPlayers: (state, action: PayloadAction<ClubPlayers | null>) => {
       if (action.payload != null) {
         let playerCards: ClubPlayerCard[] = Object.assign(

@@ -20,7 +20,7 @@
       {
          "all_frames": false,
          "js": [
-            "react_app/static/js/main.c010b76a.js"
+            "react_app/static/js/main.e2fc2f38.js"
          ],
          "css": [
             "react_app/static/css/main.08cdf3a4.css"
@@ -41,7 +41,7 @@
    "web_accessible_resources": [
       "hook.js",
       "react_app/static/media/*",
-      "react_app/static/js/*",
+      "react_app/static/js/solverWorker.49ca1ec1.worker.js",
       "*.wasm"
    ]
 }

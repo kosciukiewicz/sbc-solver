@@ -10,6 +10,7 @@ import { solverSlice } from "../../../store/slices/solver/solver.slice";
 
 import Worker from "worker-loader!../../../worker/solverWorker.ts";
 import { SolverState } from "../../../store/slices/solver/solver.types";
+import { appSettings } from "../../../config/appConfig";
 
 let worker = new Worker();
 
@@ -74,20 +75,40 @@ export const useSolverBottonView = () => {
       },
     };
 
-    worker.addEventListener("message", (e) => {
-      const { solverResult } = e.data;
-      console.log(solverResult);
-      dispatch(solverSlice.actions.setSolverResult(solverResult));
-    });
-    worker.addEventListener("error", (e) => {
-      console.log(e);
-    });
+    if (appSettings.isAttachedAsChromeExtension) {
+      chrome.runtime.sendMessage(
+        chrome.runtime.id,
+        {
+          message_type: "FUT_WEB_APP_SOLVE",
+          data: {
+            challenge: challenge,
+            clubPlayerCards: solverPlayerCards,
+            solverConfig: config,
+          },
+        },
+        function (response) {
+          {
+            const { solverResult } = response;
+            dispatch(solverSlice.actions.setSolverResult(solverResult));
+          }
+        },
+      );
+    } else {
+      worker.addEventListener("message", (e) => {
+        const { solverResult } = e.data;
+        console.log(solverResult);
+        dispatch(solverSlice.actions.setSolverResult(solverResult));
+      });
+      worker.addEventListener("error", (e) => {
+        console.log(e);
+      });
+      worker.postMessage({
+        challenge: challenge,
+        clubPlayerCards: solverPlayerCards,
+        solverConfig: config,
+      });
+    }
     dispatch(solverSlice.actions.setSolverStateRunning());
-    worker.postMessage({
-      challenge: challenge,
-      clubPlayerCards: solverPlayerCards,
-      solverConfig: config,
-    });
   }, [dispatch, solverPlayerCards, solverConfig]);
 
   return {

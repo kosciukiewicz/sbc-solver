@@ -12,14 +12,12 @@ import SolverConfigView from "./SolverConfigView/SolverConfigView";
 import SolverBottonView from "./SolveButtonView/SolveButtonView";
 import ResultsView from "./ResultsView/ResultsView";
 import ResultsHeaderView from "./ResultsView/ResultsHeaderView";
-import { useState } from "react";
 
 export const SolverView: React.FC = () => {
-  const { disabledKeys } = useSolverView();
-  const [isOpen, setIsOpen] = useState(true);
+  const { disabledKeys, isSolverOpen, setIsSolverOpen } = useSolverView();
   let className;
 
-  if (isOpen) {
+  if (isSolverOpen) {
     className = "flex h-screen flex-col justify-between";
   } else {
     className = "flex flex-col justify-between";
@@ -27,8 +25,8 @@ export const SolverView: React.FC = () => {
 
   return (
     <div className={className}>
-      <SolverHeader onCollapseClick={() => setIsOpen(!isOpen)} />
-      {isOpen ? (
+      <SolverHeader onCollapseClick={() => setIsSolverOpen(!isSolverOpen)} />
+      {isSolverOpen ? (
         <>
           <div className="mb-auto bg-panelBackground p-4">
             <Accordion variant="light" disabledKeys={disabledKeys}>

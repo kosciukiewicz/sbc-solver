@@ -41,7 +41,8 @@ const SBCHeaderView: React.FC = () => {
             {challenge?.name}
           </Chip>
           <Chip variant="solid" color="success" size="sm">
-            Supported requirements: {challangeRequirements.length}
+            Supported requirements:{" "}
+            {challangeRequirements.length - notImplementedRequirementsCount}
           </Chip>
           <Chip variant="solid" color="warning" size="sm">
             Not implemented requirements: {notImplementedRequirementsCount}

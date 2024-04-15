@@ -5,6 +5,7 @@ import {
   ClubPlayerCard,
   ClubPlayers,
   RawClubPlayerCard,
+  SolverResult,
   SquadBuildingChallenge,
 } from "../data/interfaces";
 import { hashCode } from "../utils";
@@ -13,14 +14,20 @@ import { read_raw_challenge, read_raw_club_players } from "sbc_solver_engine";
 export const initializeWebAppGateway = (
   onClubPlayersImported: (clubPlayers: ClubPlayers) => void,
   onChallengeImported: (challenge: SquadBuildingChallenge) => void,
+  onChallangeSolved: (solverResult: SolverResult) => void,
 ) => {
   if (appSettings.dataProvider == DataProvider.Mock) {
     return addMockListeners(onClubPlayersImported, onChallengeImported);
   } else {
     if (chrome?.runtime !== undefined) {
-      addListeners(onClubPlayersImported, onChallengeImported);
+      addListeners(
+        onClubPlayersImported,
+        onChallengeImported,
+        onChallangeSolved,
+      );
       chrome.runtime.sendMessage(chrome.runtime.id, {
         message_type: "START_DEBUGING",
+        data: {},
       });
     } else {
       console.log("Chrome runtime unavailable");
@@ -43,19 +50,25 @@ const addMockListeners = (
 const addListeners = (
   onClubPlayersImported: (clubPlayers: ClubPlayers) => void,
   onChallengeImported: (challenge: SquadBuildingChallenge) => void,
+  onChallangeSolved: (solverResult: SolverResult) => void,
 ) => {
   const handleMessage = (
     request: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     sender: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     sendResponse: any, // eslint-disable-line @typescript-eslint/no-explicit-any
   ) => {
-    handleDataMessage(
-      request,
-      sender,
-      sendResponse,
-      onClubPlayersImported,
-      onChallengeImported,
-    );
+    console.log(request);
+    if (request.message_type == "FUT_WEB_APP_SOLVER_RESULT") {
+      onChallangeSolved(request.data.solverResult);
+    } else {
+      handleDataMessage(
+        request,
+        sender,
+        sendResponse,
+        onClubPlayersImported,
+        onChallengeImported,
+      );
+    }
   };
 
   if (!chrome.runtime.onMessage.hasListeners()) {
@@ -74,7 +87,6 @@ const handleDataMessage = (
     return;
   }
 
-  console.log(request);
   const parsedData = JSON.parse(request.data.response_body);
   let challenges: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
 

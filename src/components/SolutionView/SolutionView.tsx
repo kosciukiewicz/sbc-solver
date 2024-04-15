@@ -32,6 +32,9 @@ import {
 import { PlayerInfoTableRow } from "../PlayerTableRow/PlayerInfoTableRow";
 import SBCRequirementDescription from "../SBCRequirementDescription";
 import { mode } from "../../utils";
+import { solve } from "../../web_app_gateway/auto_solver";
+import { useAppDispatch } from "../../store/store";
+import { solverSlice } from "../../store/slices/solver/solver.slice";
 
 interface SolutionViewProps {
   challengeFormationName: string;
@@ -64,6 +67,12 @@ const columns = [
 
 export const SolutionView: React.FC<SolutionViewProps> = (props) => {
   const { challengeFormationName, solution } = props;
+
+  const dispatch = useAppDispatch();
+  const useSolution = React.useCallback(async (solution: SolverSolution) => {
+    dispatch(solverSlice.actions.setIsOpen(false));
+    solve(solution);
+  }, []);
 
   const renderCell = React.useCallback(
     (playerIndex: number, playerCard: ClubPlayerCard, columnKey: Key) => {
@@ -208,7 +217,11 @@ export const SolutionView: React.FC<SolutionViewProps> = (props) => {
           </Table>
         </CardBody>
       </Card>
-      <Button color="primary" className="my-4 w-full">
+      <Button
+        color="primary"
+        className="my-4 w-full"
+        onClick={() => useSolution(solution)}
+      >
         Use this solution
       </Button>
     </div>
