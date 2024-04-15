@@ -23,7 +23,6 @@ const downloadPlayers = (clubPLayers: ClubPlayers) => {
 
 const PlayersHeaderView: React.FC<PlayersProps> = (props) => {
   const { clubPlayers } = props;
-  console.log((appSettings.advancedMode as boolean) == false);
   return (
     <div className="flex items-center gap-2">
       <span className="text-xl font-semibold">Players</span>
@@ -36,7 +35,6 @@ const PlayersHeaderView: React.FC<PlayersProps> = (props) => {
               size="sm"
               onClick={() => downloadPlayers(clubPlayers)}
             >
-              {" "}
               <AiOutlineDownload className="text-large" />
             </Button>
           ) : null}

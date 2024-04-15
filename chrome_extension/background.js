@@ -40,7 +40,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return;
   }
 
-  console.log(request);
   const { message_type, data } = request;
 
   switch (message_type) {
@@ -71,29 +70,38 @@ const solve = (request) => {
       });
     });
   });
-  console.log(request);
   worker.postMessage(request);
 };
 
 const attachDebugger = () => {
-  if (currentTabId) {
-    chrome.debugger.detach({ tabId: currentTabId });
-  }
-  chrome.tabs.query({ active: true }, function (tabs) {
-    currentTabId = tabs[0].id;
-    if (currentTabId < 0) {
-      return;
-    }
-    chrome.debugger.attach(
-      {
-        tabId: currentTabId,
-      },
-      version,
-      onAttach.bind(null, currentTabId),
-    );
-    chrome.debugger.onDetach.addListener(debuggerDetachHandler);
-    console.log("attach " + currentTabId);
-  });
+  chrome.tabs.query(
+    { active: true, currentWindow: true, title: "* Ultimate Team *" },
+    function (tabs) {
+      const newTabId = tabs[0].id;
+      if (currentTabId != newTabId) {
+        if (currentTabId) {
+          chrome.debugger.detach({ tabId: currentTabId });
+        }
+
+        currentTabId = newTabId;
+
+        if (currentTabId < 0) {
+          return;
+        }
+
+        chrome.debugger.attach(
+          {
+            tabId: currentTabId,
+          },
+          version,
+          onAttach.bind(null, currentTabId),
+        );
+
+        chrome.debugger.onDetach.addListener(debuggerDetachHandler);
+        console.log("attach " + currentTabId);
+      }
+    },
+  );
 };
 
 function debuggerDetachHandler() {
@@ -148,10 +156,13 @@ function handleEvent(debuggeeId, message, params) {
         requestId: params.requestId,
       },
       function (response) {
+        if (chrome.runtime.lastError) {
+          console.log(chrome.runtime.lastError.message);
+        }
+
         if (response) {
           request.set("response_body", response);
           requests.set(params.requestId, request);
-          console.log(request);
           chrome.tabs.sendMessage(
             currentTabId,
             {

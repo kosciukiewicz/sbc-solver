@@ -9,6 +9,7 @@ const SolverBottonView: React.FC = () => {
   return (
     <div>
       <Progress
+        aria-label="solver-progress"
         value={solverProgress}
         color="primary"
         className={progressClassName}
