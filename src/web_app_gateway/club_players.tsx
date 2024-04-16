@@ -9,7 +9,10 @@ import {
   SquadBuildingChallenge,
 } from "../data/interfaces";
 import { hashCode } from "../utils";
-import { read_raw_challenge, read_raw_club_players } from "sbc_solver_engine";
+import {
+  read_raw_challenge,
+  read_raw_club_players,
+} from "@kosciukiewicz/sbc_solver_engine";
 
 export const initializeWebAppGateway = (
   onClubPlayersImported: (clubPlayers: ClubPlayers) => void,

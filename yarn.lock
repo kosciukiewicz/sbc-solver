@@ -1711,6 +1711,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@kosciukiewicz/sbc_solver_engine@0.0.1":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@kosciukiewicz/sbc_solver_engine/0.0.1/f297d78c9657dbf8e688c26e3241975e1b408735#f297d78c9657dbf8e688c26e3241975e1b408735"
+  integrity sha512-gtJCCnfF6D4YW1FEjreq6FnBMgbQW+luO2bnzFx2HSb3HpIDTTXDYCcIXwuBQuZdjzx5e6p1zK89Y4fuvtCs2Q==
+
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz#4fc56c15c580b9adb7dc3c333a134e540b44bfb1"
@@ -10430,9 +10435,6 @@ saxes@^5.0.1:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
-
-"sbc_solver_engine@file:../sbc-solver-engine/pkg":
-  version "0.0.1"
 
 scheduler@^0.23.0:
   version "0.23.0"

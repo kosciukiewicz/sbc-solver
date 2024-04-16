@@ -1,5 +1,5 @@
+import init from "@kosciukiewicz/sbc_solver_engine";
 import raw_formations_data from "./../assets/formations.json";
-import init from "sbc_solver_engine";
 
 export function getFormationPositions(formationName: string): string[] {
   const positionsData = raw_formations_data["positionData"].reduce(

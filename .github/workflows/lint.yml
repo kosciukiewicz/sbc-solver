@@ -13,6 +13,9 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,6 +24,10 @@ jobs:
         with:
           node-version: '19'
           cache: 'yarn'
+      - name: Authenticate with private NPM package
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.SBC_SOLVER_ENGINE_GITHUB_TOKEN }}" >> ./.npmrc
+      - name: NPM package
+        run: cat ./.npmrc
       - name: Install
         run: yarn install --prefer-offline --force
       - name: Prettier
