@@ -7,24 +7,24 @@ chrome.webRequest.onBeforeRequest.addListener(
   function (details) {
     if (
       details.url.includes(
-        "static/media/sbc_optimization_engine_bg.e79f51afea49d8b6a363.wasm",
+        "static/media/sbc_optimization_engine_bg.7f85533dcd722e0ed369.wasm",
       )
     ) {
       return {
         redirectUrl: chrome.runtime.getURL(
-          "react_app/static/media/sbc_optimization_engine_bg.e79f51afea49d8b6a363.wasm",
+          "react_app/static/media/sbc_optimization_engine_bg.7f85533dcd722e0ed369.wasm",
         ),
       };
     }
 
     if (
       details.url.includes(
-        "https://www.ea.com/static/js/solverWorker.49ca1ec1.worker.js",
+        "https://www.ea.com/static/js/solverWorker.e1ba2163.worker.js",
       )
     ) {
       return {
         redirectUrl: chrome.runtime.getURL(
-          "react_app/static/js/solverWorker.49ca1ec1.worker.js",
+          "react_app/static/js/solverWorker.e1ba2163.worker.js",
         ),
       };
     }
@@ -59,7 +59,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 const solve = (request) => {
   const worker = new Worker(
     chrome.runtime.getURL(
-      "react_app/static/js/solverWorker.49ca1ec1.worker.js",
+      "react_app/static/js/solverWorker.e1ba2163.worker.js",
     ),
   );
   worker.addEventListener("message", (e) => {

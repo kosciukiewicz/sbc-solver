@@ -17,16 +17,16 @@ export const PlayerActionsTableRow: React.FC<PlayerActionsTableRowProps> = (
   return (
     <div className="flex justify-center gap-2">
       {isIgnored ? (
-        <Tooltip content="Include">
+        <Tooltip content="Include" className="text-gray-700">
           <span
-            className="cursor-pointer text-lg text-danger  active:opacity-50"
+            className="cursor-pointer text-lg text-danger active:opacity-50"
             onClick={onUnsetSetIgnore}
           >
             <IoLockClosed />
           </span>
         </Tooltip>
       ) : (
-        <Tooltip content="Ignore">
+        <Tooltip content="Ignore" className="text-gray-700">
           <span
             className="cursor-pointer text-lg active:opacity-50"
             onClick={onSetIgnore}

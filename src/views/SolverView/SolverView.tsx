@@ -18,9 +18,9 @@ export const SolverView: React.FC = () => {
   let className;
 
   if (isSolverOpen) {
-    className = "flex h-screen flex-col justify-between";
+    className = "flex justify-items-stretch h-[calc(100vh-48px)] flex-col";
   } else {
-    className = "flex flex-col justify-between";
+    className = "flex flex-col";
   }
 
   return (
@@ -28,7 +28,7 @@ export const SolverView: React.FC = () => {
       <SolverHeader onCollapseClick={() => setIsSolverOpen(!isSolverOpen)} />
       {isSolverOpen ? (
         <>
-          <div className="mb-auto bg-panelBackground p-4">
+          <div className="flex-auto bg-panelBackground p-4">
             <Accordion variant="light" disabledKeys={disabledKeys}>
               <AccordionItem
                 key="club-players"

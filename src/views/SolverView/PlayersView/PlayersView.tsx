@@ -91,7 +91,7 @@ const PlayersView: React.FC<PlayersProps> = (props) => {
             quality = getCardLevelFullName(playerCard.card_quality);
           }
           return (
-            <Tooltip content={quality}>
+            <Tooltip className="text-gray-700" content={quality}>
               <span className="... truncate">{quality}</span>
             </Tooltip>
           );

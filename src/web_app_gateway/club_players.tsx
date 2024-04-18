@@ -13,6 +13,7 @@ import {
   read_raw_challenge,
   read_raw_club_players,
 } from "@kosciukiewicz/sbc_solver_engine";
+import { toast } from "react-toastify";
 
 export const initializeWebAppGateway = (
   onClubPlayersImported: (clubPlayers: ClubPlayers) => void,
@@ -34,6 +35,7 @@ export const initializeWebAppGateway = (
       });
     } else {
       console.log("Chrome runtime unavailable");
+      toast.error("Can't connect to chrome debugger");
     }
   }
 };
@@ -60,7 +62,6 @@ const addListeners = (
     sender: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     sendResponse: any, // eslint-disable-line @typescript-eslint/no-explicit-any
   ) => {
-    console.log(request);
     if (request.message_type == "FUT_WEB_APP_SOLVER_RESULT") {
       onChallangeSolved(request.data.solverResult);
     } else {
@@ -128,6 +129,7 @@ const handleDataMessage = (
         hashCode(JSON.stringify(clubPlayers)) + "",
         onClubPlayersImported,
       );
+      toast.success("Successfully imported club players");
     }
   } else if (
     request.data.url.includes("ut/game/fc24/sbs") &&
@@ -144,6 +146,7 @@ const handleDataMessage = (
       )[0];
       challenge["challengeSquad"] = parsedData;
       setChallange(challenge, parsedData, onChallengeImported);
+      toast.success("Successfully imported sbc");
     }
   }
   sendResponse({ status: 0 });

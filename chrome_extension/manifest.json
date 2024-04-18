@@ -20,10 +20,10 @@
       {
          "all_frames": false,
          "js": [
-            "react_app/static/js/main.e2fc2f38.js"
+            "react_app/static/js/main.877b95cb.js"
          ],
          "css": [
-            "react_app/static/css/main.08cdf3a4.css"
+            "react_app/static/css/main.5fa09adb.css"
          ],
          "matches": [
             "*://*.ea.com/*"
@@ -41,7 +41,7 @@
    "web_accessible_resources": [
       "hook.js",
       "react_app/static/media/*",
-      "react_app/static/js/solverWorker.49ca1ec1.worker.js",
+      "react_app/static/js/solverWorker.e1ba2163.worker.js",
       "*.wasm"
    ]
 }

@@ -98,7 +98,7 @@ export const SolutionView: React.FC<SolutionViewProps> = (props) => {
             quality = getCardLevelFullName(playerCard.card_quality);
           }
           return (
-            <Tooltip content={quality}>
+            <Tooltip className="text-gray-700" content={quality}>
               <span className="... truncate">{quality}</span>
             </Tooltip>
           );
@@ -127,19 +127,28 @@ export const SolutionView: React.FC<SolutionViewProps> = (props) => {
             <p className="p-2	text-base">Most frequent:</p>
             <div className="inline items-center gap-4">
               <Chip variant="solid" size="sm" className="ml-2">
-                <Tooltip content={getNationalityFullName(nationalityMode!)}>
+                <Tooltip
+                  className="text-gray-700"
+                  content={getNationalityFullName(nationalityMode!)}
+                >
                   <span>
                     Nationality: {getNationalityAbbreviation(nationalityMode!)}
                   </span>
                 </Tooltip>
               </Chip>
               <Chip variant="solid" size="sm" className="ml-2">
-                <Tooltip content={getLeagueFullName(leagueMode!)}>
+                <Tooltip
+                  className="text-gray-700"
+                  content={getLeagueFullName(leagueMode!)}
+                >
                   <span>League: {getLeagueAbbreviation(leagueMode!)}</span>
                 </Tooltip>
               </Chip>
               <Chip variant="solid" size="sm" className="ml-2">
-                <Tooltip content={getTeamFullName(teamMode!)}>
+                <Tooltip
+                  className="text-gray-700"
+                  content={getTeamFullName(teamMode!)}
+                >
                   <span>Team: {getTeamAbbreviation(teamMode!)}</span>
                 </Tooltip>
               </Chip>
@@ -170,6 +179,7 @@ export const SolutionView: React.FC<SolutionViewProps> = (props) => {
                     color={color}
                   >
                     <Tooltip
+                      className="text-gray-700"
                       content={
                         <SBCRequirementDescription
                           requirement={

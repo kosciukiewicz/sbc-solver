@@ -11,6 +11,7 @@ import { solverSlice } from "../../../store/slices/solver/solver.slice";
 import Worker from "worker-loader!../../../worker/solverWorker.ts";
 import { SolverState } from "../../../store/slices/solver/solver.types";
 import { appSettings } from "../../../config/appConfig";
+import { toast } from "react-toastify";
 
 let worker = new Worker();
 
@@ -96,11 +97,12 @@ export const useSolverBottonView = () => {
     } else {
       worker.addEventListener("message", (e) => {
         const { solverResult } = e.data;
-        console.log(solverResult);
         dispatch(solverSlice.actions.setSolverResult(solverResult));
+        toast.success("SBC solver finished");
       });
       worker.addEventListener("error", (e) => {
         console.log(e);
+        toast.error("Something went wrong while running solver");
       });
       worker.postMessage({
         challenge: challenge,
