@@ -1,8 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { RootState, useAppDispatch, useAppSelector } from "../../store/store";
-import { getIgnoredClubPlayerCardsIds } from "../../data/dataProvider";
 import { solverSlice } from "../../store/slices/solver/solver.slice";
-import { initializeWebAppGateway } from "../../web_app_gateway/club_players";
+import { initializeWebAppDataListeners } from "../../web_app/dataImporting";
 import {
   ClubPlayers,
   SolverResult,
@@ -104,7 +103,11 @@ export const useInitializeSolver = () => {
   );
 
   const initializeSolver = useCallback(async () => {
-    initializeWebAppGateway(setClubPlayers, setChallange, setSolverResult);
+    initializeWebAppDataListeners(
+      setClubPlayers,
+      setChallange,
+      setSolverResult,
+    );
     initializeIgnoredPlayerCards();
   }, [dispatch]);
 
@@ -114,10 +117,18 @@ export const useInitializeSolver = () => {
 const useInitializeIgnoredPlayerCards = () => {
   const dispatch = useAppDispatch();
   const initializeIgnoredPlayerCards = useCallback(async () => {
-    const ignoredPlayerCards = await getIgnoredClubPlayerCardsIds();
-    dispatch(
-      solverSlice.actions.setIgnoredClubPlayerCardsIds(ignoredPlayerCards),
+    const raw_ignored_ids: string | null = sessionStorage.getItem(
+      "IGNORED_CLUB_PLAYER_CARD_IDS",
     );
+
+    if (raw_ignored_ids) {
+      const ignoredClubPlayerCardsIds: number[] = JSON.parse(raw_ignored_ids);
+      dispatch(
+        solverSlice.actions.setIgnoredClubPlayerCardsIds(
+          ignoredClubPlayerCardsIds,
+        ),
+      );
+    }
   }, [dispatch]);
 
   return initializeIgnoredPlayerCards;

@@ -1,6 +1,6 @@
 import { Slider } from "@nextui-org/react";
 import { useSolverConfigView } from "./SolverConfigView.hooks";
-import { appSettings } from "../../../config/appConfig";
+import { appConfig } from "../../../config";
 
 const SolverConfigView: React.FC = () => {
   const { solverConfig, setConfigValue } = useSolverConfigView();
@@ -33,7 +33,7 @@ const SolverConfigView: React.FC = () => {
         }
         className="m-auto mt-4"
       />
-      {appSettings.advancedMode ? (
+      {appConfig.advancedMode ? (
         <>
           <Slider
             size="sm"

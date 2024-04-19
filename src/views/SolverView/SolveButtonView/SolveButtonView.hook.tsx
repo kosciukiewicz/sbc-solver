@@ -10,10 +10,13 @@ import { solverSlice } from "../../../store/slices/solver/solver.slice";
 
 import Worker from "worker-loader!../../../worker/solverWorker.ts";
 import { SolverState } from "../../../store/slices/solver/solver.types";
-import { appSettings } from "../../../config/appConfig";
+import { appConfig } from "../../../config";
 import { toast } from "react-toastify";
 
-let worker = new Worker();
+let worker: Worker;
+if (!appConfig.isAttachedAsChromeExtension) {
+  worker = new Worker();
+}
 
 export const useSolverBottonView = () => {
   const dispatch = useAppDispatch();
@@ -76,7 +79,7 @@ export const useSolverBottonView = () => {
       },
     };
 
-    if (appSettings.isAttachedAsChromeExtension) {
+    if (appConfig.isAttachedAsChromeExtension) {
       chrome.runtime.sendMessage(
         chrome.runtime.id,
         {

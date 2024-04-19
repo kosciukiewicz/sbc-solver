@@ -3,7 +3,7 @@ import { ClubPlayers } from "../../../data/interfaces";
 import { RootState } from "../../../store/store";
 import { Button, Chip } from "@nextui-org/react";
 import { AiOutlineDownload } from "react-icons/ai";
-import { appSettings } from "../../../config/appConfig";
+import { appConfig } from "../../../config";
 
 interface PlayersProps {
   clubPlayers: ClubPlayers | null;
@@ -28,7 +28,7 @@ const PlayersHeaderView: React.FC<PlayersProps> = (props) => {
       <span className="text-xl font-semibold">Players</span>
       {clubPlayers != null ? (
         <>
-          {appSettings.advancedMode ? (
+          {appConfig.advancedMode ? (
             <Button
               isIconOnly
               color="primary"

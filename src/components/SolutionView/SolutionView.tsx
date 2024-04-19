@@ -32,7 +32,7 @@ import {
 import { PlayerInfoTableRow } from "../PlayerTableRow/PlayerInfoTableRow";
 import SBCRequirementDescription from "../SBCRequirementDescription";
 import { mode } from "../../utils";
-import { solve } from "../../web_app_gateway/auto_solver";
+import { fillSquadWithSolution } from "../../web_app/squadFilling";
 import { useAppDispatch } from "../../store/store";
 import { solverSlice } from "../../store/slices/solver/solver.slice";
 
@@ -71,7 +71,7 @@ export const SolutionView: React.FC<SolutionViewProps> = (props) => {
   const dispatch = useAppDispatch();
   const useSolution = React.useCallback(async (solution: SolverSolution) => {
     dispatch(solverSlice.actions.setIsOpen(false));
-    solve(solution);
+    fillSquadWithSolution(solution);
   }, []);
 
   const renderCell = React.useCallback(

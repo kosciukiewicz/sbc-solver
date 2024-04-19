@@ -2,7 +2,7 @@ import { Button, Chip } from "@nextui-org/react";
 import { useSBCView } from "./SBCView.hooks";
 import { SquadBuildingChallenge } from "../../../data/interfaces";
 import { AiOutlineDownload } from "react-icons/ai";
-import { appSettings } from "../../../config/appConfig";
+import { appConfig } from "../../../config";
 
 const downloadChallenge = (challenge: SquadBuildingChallenge) => {
   const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
@@ -27,7 +27,7 @@ const SBCHeaderView: React.FC = () => {
       <span className="self-end text-xl font-semibold">SBC</span>
       {isChallangeImported ? (
         <>
-          {appSettings.advancedMode ? (
+          {appConfig.advancedMode ? (
             <Button
               isIconOnly
               color="primary"
