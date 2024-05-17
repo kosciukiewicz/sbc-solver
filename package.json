@@ -1,6 +1,6 @@
 {
   "name": "create-react-app-with-styled-components-typescript",
-  "version": "5.0.0",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@kosciukiewicz/sbc_solver_engine": "^0.1.0",

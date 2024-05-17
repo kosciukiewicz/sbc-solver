@@ -1,56 +1,76 @@
-# Create React App example with styled-components & TypeScript
+# EA FC SBC Solver ⚽
 
-The main difference between this and the non-typescript example is that you need to add the following path config to your tsconfig:
+This project is an automatic solver designed to tackle squad building challenges (SBCs) from the EA FC 24 game using genetic algorithms. 
 
-```json
-"paths": {
-  "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
-}
-```
+## Main features
+- completely free;
+- imports club players and SBCs directly from the FUT Web App;
+- solves the challanges fast;
+- automatically fills the SBC's with selected solutions in seconds;
+- conveniently packaged into a Chrome extension built with React and Tailwind CSS;
+- optimization engine is written in Rust ⚙️ and packed into the wasm package that runs on the client side (browser);
 
-and install @types/styled-components:
+The code for the optimization engine is planned to be published in the near future 🚀. 
 
-```sh
-npm install --save-dev @types/styled-components
-```
+## Setup the Project from Scratch
 
-Alternatively, to skip this configuration, you can set `skipLibCheck: true` in your tsconfig.
+1. **Install dependencies (using `yarn`):**
 
-## How to use
+   ```bash
+   yarn install
+   ```
+    If you want to access `@kosciukiewicz/sbc_solver_engine` before it become public feel free to contact me using `contact@kosciukiewicz.tech`.
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+2. **Set up environment variables:**
 
-<!-- #default-branch-switch -->
+    Run the following and fill the missing variables in created files:
 
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app-with-styled-components-typescript
-cd create-react-app-with-styled-components-typescript
-```
+   ```bash
+   cp .env.example .env.development
+   ```
 
-Install it and run:
+   ```bash
+   cp .env.example .env
+   ```
 
-```sh
-npm install
-npm start
-```
+3. **Run the development server:**
+   ```bash
+   yarn start
+   ```
 
-## CodeSandbox
+4. **Build the chrome extension:**
+   ```bash
+   ./scripts/build_extension.sh
+   ```
 
-<!-- #default-branch-switch -->
+   Then you can load the `chrome_extension` directory as chrome browser extension as described in the next section.
 
-Note that CodeSandbox is not supporting react-app-rewired, yet you can [still see the code](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/create-react-app-with-styled-components-typescript).
+## Using the extension
 
-The following link leverages this demo: https://mui.com/guides/interoperability/#change-the-default-styled-engine with Parcel's alias feature within the `package.json`
+Weather you downloaded and extracted the zip from releases page or built it yourself you can use the extension in chrome browser.
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/styled-components-interoperability-w9z9d)
+1. **Open Chrome Extension Management Page:**
 
-## The idea behind the example
+   - Open Google Chrome browser.
+   - Type `chrome://extensions/` in the address bar and press Enter.
 
-This example demonstrates how you can setup [Create React App](https://github.com/facebookincubator/create-react-app) with [styled-components](https://styled-components.com/) as a style engine for your application using TypeScript.
+2. **Enable Developer Mode:**
 
-## What's next?
+   - In the top-right corner of the Extensions page, you will see a toggle switch labeled “Developer mode”. Turn it on.
 
-<!-- #default-branch-switch -->
+3. **Load Unpacked Extension:**
 
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+   - Click the "Load unpacked" button on the top-left corner of the page.
+   
+4. **Select the chrome extension directory:**
+
+   - A file dialog will open. Navigate to the directory where your project resides.
+   - Open the directory containing the built extension
+
+## Disclaimer
+
+I do not hold or own any rights to EA Sports' digital property, including player cards or assets. All trademarks and copyrights belong to their respective owners. This solver is a free hobby project intended for community sharing, and no fees are charged for its use. 
+
+Use this solver at your own risk. I do not take responsibility for any account bans or suspensions that may result from using this tool. While it is very unlikely to get banned, please be aware of the potential risks involved. 
+
+By using the EA FC 24 Squad Builder Solver, you agree to this disclaimer. Thank you for understanding.
