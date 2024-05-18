@@ -1,13 +1,4 @@
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  Tooltip,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import { IoFootball } from "react-icons/io5";
 import { AiOutlineClear, AiFillQuestionCircle } from "react-icons/ai";
 
@@ -22,7 +13,6 @@ export const SolverHeader: React.FC<SolverHeaderProps> = (
   props: SolverHeaderProps,
 ) => {
   const { clearState } = useSolverView();
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <div className="m-4 inline-block flex items-center justify-between">
@@ -39,7 +29,12 @@ export const SolverHeader: React.FC<SolverHeaderProps> = (
             isIconOnly
             color="primary"
             aria-label="Clear"
-            onClick={() => onOpen()}
+            onClick={() =>
+              window.open(
+                "https://github.com/kosciukiewicz/sbc-solver",
+                "_blank",
+              )
+            }
           >
             <AiFillQuestionCircle className="text-2xl" />
           </Button>
@@ -56,28 +51,6 @@ export const SolverHeader: React.FC<SolverHeaderProps> = (
           </Button>
         </Tooltip>
       </div>
-      <Modal
-        backdrop="blur"
-        isOpen={isOpen}
-        onClose={onClose}
-        className="bg-panelBackground text-foreground dark"
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                How it works?
-              </ModalHeader>
-              <ModalBody></ModalBody>
-              <ModalFooter>
-                <Button color="primary" onPress={onClose}>
-                  Close
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
     </div>
   );
 };

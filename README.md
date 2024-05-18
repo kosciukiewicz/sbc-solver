@@ -2,15 +2,81 @@
 
 This project is an automatic solver designed to tackle squad building challenges (SBCs) from the EA FC 24 game using genetic algorithms. 
 
+
 ## Main features
 - completely free;
 - imports club players and SBCs directly from the FUT Web App;
 - solves the challanges fast;
 - automatically fills the SBC's with selected solutions in seconds;
+- allows to block the use your most valuable cards in the generated solutions;
 - conveniently packaged into a Chrome extension built with React and Tailwind CSS;
 - optimization engine is written in Rust ⚙️ and packed into the wasm package that runs on the client side (browser);
 
 The code for the optimization engine is planned to be published in the near future 🚀. 
+
+## Using the extension
+
+Weather you downloaded and extracted the zip from releases page or built it yourself you can use the extension in chrome browser.
+
+1. **Open Chrome Extension Management Page:**
+
+   - Open Google Chrome browser.
+   - Type `chrome://extensions/` in the address bar and press Enter.
+
+2. **Enable Developer Mode:**
+
+   - In the top-right corner of the Extensions page, you will see a toggle switch labeled “Developer mode”. Turn it on.
+
+3. **Load Unpacked Extension:**
+
+   - Click the "Load unpacked" button on the top-left corner of the page.
+   
+4. **Select the chrome extension directory:**
+
+   - A file dialog will open. Navigate to the directory where your project resides.
+   - Open the directory containing the built extension
+
+## How to
+
+1. **Import club players:**
+
+   After logging into FUT Web app, got into "Club", the click "Players" and scroll through your cards until the proper notification appear. 
+
+   Usually, club import works well directly after logging into the FUT Web App, If it doesn't work for You, please refresh the page and try again.
+
+   <details>
+   <summary>click to expand</summary>
+   <img src="./docs/club_import.gif" alt="Club import">
+   </details>
+
+2. **Select SBC to solve:**
+
+   Just select any SBC You want to solve and click "Start challange" or "Go to challange".
+
+   <details>
+   <summary>click to expand</summary>
+   <img src="./docs/sbc_import.gif" alt="SBC import">
+   </details>
+
+3. **Solve the selected challange:**
+
+   After successfully importing club players click solve and wait until the solutions are available. 
+
+   <details>
+   <summary>click to expand</summary>
+   <img src="./docs/solve.gif" alt="Solve">
+   </details>
+
+4. **Use the generated solution:**
+
+   Select the solution You want to use and click "Use this solution" and wait until the squad is filled.
+
+   <details>
+   <summary>click to expand</summary>
+   <img src="./docs/solving.gif" alt="Use solution">
+   </details>
+
+
 
 ## Setup the Project from Scratch
 
@@ -43,29 +109,7 @@ The code for the optimization engine is planned to be published in the near futu
    ./scripts/build_extension.sh
    ```
 
-   Then you can load the `chrome_extension` directory as chrome browser extension as described in the next section.
-
-## Using the extension
-
-Weather you downloaded and extracted the zip from releases page or built it yourself you can use the extension in chrome browser.
-
-1. **Open Chrome Extension Management Page:**
-
-   - Open Google Chrome browser.
-   - Type `chrome://extensions/` in the address bar and press Enter.
-
-2. **Enable Developer Mode:**
-
-   - In the top-right corner of the Extensions page, you will see a toggle switch labeled “Developer mode”. Turn it on.
-
-3. **Load Unpacked Extension:**
-
-   - Click the "Load unpacked" button on the top-left corner of the page.
-   
-4. **Select the chrome extension directory:**
-
-   - A file dialog will open. Navigate to the directory where your project resides.
-   - Open the directory containing the built extension
+   Then you can load the `chrome_extension` directory as chrome browser extension as described in the "Using the extension" section.
 
 ## Disclaimer
 

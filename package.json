@@ -1,6 +1,6 @@
 {
-  "name": "create-react-app-with-styled-components-typescript",
-  "version": "0.1.0",
+  "name": "ea-sbc-solver",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@kosciukiewicz/sbc_solver_engine": "^0.1.0",
@@ -19,7 +19,6 @@
     "react-redux": "^9.1.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
-    "styled-components": "latest",
     "typescript": "5.3.3",
     "worker-loader": "^3.0.8"
   },
@@ -48,7 +47,6 @@
     "@types/node": "latest",
     "@types/react": "^18.0.18",
     "@types/react-dom": "latest",
-    "@types/styled-components": "latest",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "eslint": "^8.56.0",
