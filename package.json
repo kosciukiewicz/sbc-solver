@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "@kosciukiewicz/sbc_solver_engine": "^0.1.0",
+    "@kosciukiewicz/ea_sbc_solver_engine": "^0.2.1",
     "@nextui-org/react": "^2.2.9",
     "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "latest",

@@ -23,5 +23,4 @@ yarn-error.log*
 .idea
 .vscode
 
-.npmrc
 /chrome_extension/react_app

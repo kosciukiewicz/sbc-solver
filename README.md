@@ -1,9 +1,9 @@
 # EA FC SBC Solver ⚽
 
-This project is an automatic solver designed to tackle squad building challenges (SBCs) from the EA FC 24 game using genetic algorithms. 
-
+This project is an automatic solver designed to tackle squad building challenges (SBCs) from the EA FC 24 game using genetic algorithms.
 
 ## Main features
+
 - completely free;
 - imports club players and SBCs directly from the FUT Web App;
 - solves the challanges fast;
@@ -12,7 +12,7 @@ This project is an automatic solver designed to tackle squad building challenges
 - conveniently packaged into a Chrome extension built with React and Tailwind CSS;
 - optimization engine is written in Rust ⚙️ and packed into the wasm package that runs on the client side (browser);
 
-The code for the optimization engine is planned to be published in the near future 🚀. 
+The code for the optimization engine is planned to be published in the near future 🚀.
 
 ## Using the extension
 
@@ -30,7 +30,7 @@ Weather you downloaded and extracted the zip from releases page or built it your
 3. **Load Unpacked Extension:**
 
    - Click the "Load unpacked" button on the top-left corner of the page.
-   
+
 4. **Select the chrome extension directory:**
 
    - A file dialog will open. Navigate to the directory where your project resides.
@@ -40,7 +40,7 @@ Weather you downloaded and extracted the zip from releases page or built it your
 
 1. **Import club players:**
 
-   After logging into FUT Web app, got into "Club", the click "Players" and scroll through your cards until the proper notification appear. 
+   After logging into FUT Web app, got into "Club", the click "Players" and scroll through your cards until the proper notification appear.
 
    Usually, club import works well directly after logging into the FUT Web App, If it doesn't work for You, please refresh the page and try again.
 
@@ -60,7 +60,7 @@ Weather you downloaded and extracted the zip from releases page or built it your
 
 3. **Solve the selected challange:**
 
-   After successfully importing club players click solve and wait until the solutions are available. 
+   After successfully importing club players click solve and wait until the solutions are available.
 
    <details>
    <summary>click to expand</summary>
@@ -76,8 +76,6 @@ Weather you downloaded and extracted the zip from releases page or built it your
    <img src="./docs/solving.gif" alt="Use solution">
    </details>
 
-
-
 ## Setup the Project from Scratch
 
 1. **Install dependencies (using `yarn`):**
@@ -85,11 +83,17 @@ Weather you downloaded and extracted the zip from releases page or built it your
    ```bash
    yarn install
    ```
-    If you want to access `@kosciukiewicz/sbc_solver_engine` before it become public feel free to contact me using `contact@kosciukiewicz.tech`.
+
+   The `@kosciukiewicz/ea_sbc_solver_engine` npm package is available publicly and connected to this repository. To access github npm registry remember to set up credentials in `~/.npmrc`:
+
+   ```
+   //npm.pkg.github.com/:_authToken={YOU_PERSONAL_ACCESS_TOKEN}
+   @NAMESPACE:registry=https://npm.pkg.github.com/
+   ```
 
 2. **Set up environment variables:**
 
-    Run the following and fill the missing variables in created files:
+   Run the following and fill the missing variables in created files:
 
    ```bash
    cp .env.example .env.development
@@ -100,11 +104,13 @@ Weather you downloaded and extracted the zip from releases page or built it your
    ```
 
 3. **Run the development server:**
+
    ```bash
    yarn start
    ```
 
 4. **Build the chrome extension:**
+
    ```bash
    ./scripts/build_extension.sh
    ```
@@ -113,8 +119,8 @@ Weather you downloaded and extracted the zip from releases page or built it your
 
 ## Disclaimer
 
-I do not hold or own any rights to EA Sports' digital property, including player cards or assets. All trademarks and copyrights belong to their respective owners. This solver is a free hobby project intended for community sharing, and no fees are charged for its use. 
+I do not hold or own any rights to EA Sports' digital property, including player cards or assets. All trademarks and copyrights belong to their respective owners. This solver is a free hobby project intended for community sharing, and no fees are charged for its use.
 
-Use this solver at your own risk. I do not take responsibility for any account bans or suspensions that may result from using this tool. While it is very unlikely to get banned, please be aware of the potential risks involved. 
+Use this solver at your own risk. I do not take responsibility for any account bans or suspensions that may result from using this tool. While it is very unlikely to get banned, please be aware of the potential risks involved.
 
 By using the EA FC 24 Squad Builder Solver, you agree to this disclaimer. Thank you for understanding.
