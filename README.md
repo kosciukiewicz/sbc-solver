@@ -1,6 +1,6 @@
 # EA FC SBC Solver ⚽
 
-This project is an automatic solver designed to tackle squad building challenges (SBCs) from the EA FC 24 game using genetic algorithms.
+This project is an automatic solver designed to tackle squad building challenges (SBCs) from the EA FC 25 game using genetic algorithms.
 
 ## Main features
 
@@ -87,7 +87,7 @@ Weather you downloaded and extracted the zip from releases page or built it your
    The `@kosciukiewicz/ea_sbc_solver_engine` npm package is available publicly and connected to this repository. To access github npm registry remember to set up credentials in `~/.npmrc`:
 
    ```
-   //npm.pkg.github.com/:_authToken={YOU_PERSONAL_ACCESS_TOKEN}
+   //npm.pkg.github.com/:_authToken={YOUR_PERSONAL_ACCESS_TOKEN}
    @NAMESPACE:registry=https://npm.pkg.github.com/
    ```
 
@@ -123,4 +123,4 @@ I do not hold or own any rights to EA Sports' digital property, including player
 
 Use this solver at your own risk. I do not take responsibility for any account bans or suspensions that may result from using this tool. While it is very unlikely to get banned, please be aware of the potential risks involved.
 
-By using the EA FC 24 Squad Builder Solver, you agree to this disclaimer. Thank you for understanding.
+By using the EA FC 25 Squad Builder Solver, you agree to this disclaimer. Thank you for understanding.

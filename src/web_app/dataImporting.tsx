@@ -12,7 +12,7 @@ import { hashCode } from "../utils";
 import init, {
   read_raw_challenge,
   read_raw_club_players,
-} from "@kosciukiewicz/sbc_solver_engine";
+} from "@kosciukiewicz/ea_sbc_solver_engine";
 import { toast } from "react-toastify";
 
 export const initializeWebAppDataListeners = (
@@ -96,7 +96,7 @@ const handleDataMessage = (
   const parsedData = JSON.parse(request.data.response_body);
   let challenges: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-  if (request.data.url.includes("ut/game/fc24/club/stats/club")) {
+  if (request.data.url.includes("ut/game/fc25/club/stats/club")) {
     const expectedClubPlayersCount = parsedData.stat.filter(
       (d: { [key: string]: string }) => d.type == "players",
     )[0].typeValue;
@@ -106,7 +106,7 @@ const handleDataMessage = (
     );
     sessionStorage.removeItem("club_players");
     sessionStorage.removeItem("club_players_count");
-  } else if (request.data.url.includes("ut/game/fc24/club")) {
+  } else if (request.data.url.includes("ut/game/fc25/club")) {
     const rawClubPlayers = sessionStorage.getItem("club_players");
     let clubPlayers: RawClubPlayerCard[];
 
@@ -134,12 +134,12 @@ const handleDataMessage = (
       toast.success("Successfully imported club players");
     }
   } else if (
-    request.data.url.includes("ut/game/fc24/sbs") &&
+    request.data.url.includes("ut/game/fc25/sbs") &&
     request.data.url.includes("challenges")
   ) {
     challenges = parsedData.challenges;
     sessionStorage.setItem("challenges", JSON.stringify(challenges));
-  } else if (request.data.url.includes("ut/game/fc24/sbs/challenge")) {
+  } else if (request.data.url.includes("ut/game/fc25/sbs/challenge")) {
     const rawChallenges = sessionStorage.getItem("challenges");
     if (parsedData.challengeId && rawChallenges) {
       challenges = JSON.parse(rawChallenges);

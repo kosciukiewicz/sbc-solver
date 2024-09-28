@@ -24,3 +24,4 @@ yarn-error.log*
 .vscode
 
 /chrome_extension/react_app
+/chrome_extension/static

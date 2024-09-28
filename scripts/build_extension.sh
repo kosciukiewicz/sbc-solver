@@ -10,6 +10,7 @@ NO_COLOR='\033[m'
 echo -n 'Cleaning before build... '
 rm -r ./build 2>/dev/null
 rm -r ./chrome_extension/react_app 2>/dev/null
+rm -r ./chrome_extension/static 2>/dev/null
 echo -e "${GREEN}Done${NO_COLOR}"
 
 # Build react app
@@ -21,6 +22,8 @@ echo -e "${GREEN}Done${NO_COLOR}"
 echo -n 'Copying build react app contents... '
 mkdir ./chrome_extension/react_app
 cp -r ./build/* ./chrome_extension/react_app/
+mkdir ./chrome_extension/static
+cp -r ./build/static/media ./chrome_extension/static/media
 echo -e "${GREEN}Done${NO_COLOR}"
 
 # Inject build static files to chrom extension 
@@ -31,13 +34,13 @@ MAIN_CSS_ID=$(find ./chrome_extension/react_app/static/css | grep -E 'main.*.css
 MAIN_WORKER_ID=$(find ./chrome_extension/react_app/static/js | grep -E 'worker.js$' | xargs basename | cut -d '.' -f 2)
 ENGINE_ID=$(find ./chrome_extension/react_app/static/media | grep -E '.wasm$' | xargs basename | cut -d '.' -f 2)
 
-sed -i'' \
+gsed -i'' \
  -e "s/main.*.js/main.${MAIN_JS_ID}.js/" \
  -e "s/main.*.css/main.${MAIN_CSS_ID}.css/" \
  -e "s/solverWorker.*.worker.js/solverWorker.${MAIN_WORKER_ID}.worker.js/" \
  ./chrome_extension/manifest.json
 
-sed -i'' \
+gsed -i'' \
  -e "s/sbc_optimization_engine_bg.*.wasm/sbc_optimization_engine_bg.${ENGINE_ID}.wasm/" \
  -e "s/solverWorker.*.worker.js/solverWorker.${MAIN_WORKER_ID}.worker.js/" \
  ./chrome_extension/background.js 

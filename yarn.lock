@@ -1666,10 +1666,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kosciukiewicz/sbc_solver_engine@^0.1.0":
-  version "0.1.0"
-  resolved "https://npm.pkg.github.com/download/@kosciukiewicz/sbc_solver_engine/0.1.0/7bb4c5207c06fd12dddfedd284517a8b23f47a5b#7bb4c5207c06fd12dddfedd284517a8b23f47a5b"
-  integrity sha512-B05M8FJo2Wy4XVmE4/0jPMyB/yYi8UoV8UtHk/CF8qo4ghykCC4Mn/RoiV9XK1NCBNHj6Jocl9gRRzDpupLIBA==
+"@kosciukiewicz/ea_sbc_solver_engine@^0.3.0":
+  version "0.3.0"
+  resolved "https://npm.pkg.github.com/download/@kosciukiewicz/ea_sbc_solver_engine/0.3.0/bd856e0350aebf727f825da6d4b3389ca5c445ff#bd856e0350aebf727f825da6d4b3389ca5c445ff"
+  integrity sha512-zXxGgR0CqYpZtWwPJuas5tqChge3Dvr21tUH/RixV+d0gYbh1nte9j8xL6V5YtZo/+oDJ7nDNy0Ae3WzeO8uOA==
 
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.5"

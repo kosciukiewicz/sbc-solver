@@ -7,24 +7,24 @@ chrome.webRequest.onBeforeRequest.addListener(
   function (details) {
     if (
       details.url.includes(
-        "static/media/sbc_optimization_engine_bg.7f85533dcd722e0ed369.wasm",
+        "static/media/sbc_optimization_engine_bg.6641b9ce8468f7becc2d.wasm",
       )
     ) {
       return {
         redirectUrl: chrome.runtime.getURL(
-          "react_app/static/media/sbc_optimization_engine_bg.7f85533dcd722e0ed369.wasm",
+          "static/media/sbc_optimization_engine_bg.6641b9ce8468f7becc2d.wasm",
         ),
       };
     }
 
     if (
       details.url.includes(
-        "https://www.ea.com/static/js/solverWorker.e1ba2163.worker.js",
+        "https://www.ea.com/static/js/solverWorker.21c49651.worker.js",
       )
     ) {
       return {
         redirectUrl: chrome.runtime.getURL(
-          "react_app/static/js/solverWorker.e1ba2163.worker.js",
+          "react_app/static/js/solverWorker.21c49651.worker.js",
         ),
       };
     }
@@ -59,7 +59,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 const solve = (request) => {
   const worker = new Worker(
     chrome.runtime.getURL(
-      "react_app/static/js/solverWorker.e1ba2163.worker.js",
+      "react_app/static/js/solverWorker.21c49651.worker.js",
     ),
   );
   worker.addEventListener("message", (e) => {
@@ -132,6 +132,7 @@ function handleEvent(debuggeeId, message, params) {
 
   if (message == "Network.responseReceived") {
     if (params.response && filter(params.response.url)) {
+      console.log(params.response);
       const request = requests.get(params.requestId);
       if (request === undefined) {
         return;
@@ -156,11 +157,13 @@ function handleEvent(debuggeeId, message, params) {
         requestId: params.requestId,
       },
       function (response) {
+        console.log(response);
         if (chrome.runtime.lastError) {
           console.log(chrome.runtime.lastError.message);
         }
 
         if (response) {
+          console.log("Sending message");
           request.set("response_body", response);
           requests.set(params.requestId, request);
           chrome.tabs.sendMessage(
@@ -183,9 +186,9 @@ function handleEvent(debuggeeId, message, params) {
 
 function filter(url) {
   return (
-    url.endsWith("ut/game/fc24/club/stats/club") ||
-    url.endsWith("ut/game/fc24/club") ||
+    url.endsWith("ut/game/fc25/club/stats/club") ||
+    url.endsWith("ut/game/fc25/club") ||
     url.endsWith("challenges") ||
-    url.includes("game/fc24/sbs/challenge/")
+    url.includes("game/fc25/sbs/challenge/")
   );
 }

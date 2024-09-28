@@ -1,4 +1,4 @@
-import init, { run_optimization } from "@kosciukiewicz/sbc_solver_engine";
+import init, { run_optimization } from "@kosciukiewicz/ea_sbc_solver_engine";
 import { SolverResult } from "../data/interfaces";
 
 const ctx: Worker = self as any; // eslint-disable-line @typescript-eslint/no-explicit-any
