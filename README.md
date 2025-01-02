@@ -2,6 +2,12 @@
 
 This project is an automatic solver designed to tackle squad building challenges (SBCs) from the EA FC 25 game using genetic algorithms.
 
+# 🚨 Disclaimer: Project Not Maintained 🚨
+
+This project is **no longer actively maintained**. Development has been moved and integrated into [FUT Mind](https://futmind.com) and [MyClub](https://myclub.gg/) 🚀. New features are activily developed and will be available only there.
+
+Thank you for your understanding! 🙏
+
 ## Main features
 
 - completely free;
